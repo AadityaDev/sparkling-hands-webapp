@@ -1,25 +1,25 @@
 <template>
-  <section class="home bg-gray-200 relative">
+  <section class="home bg-gray-200 relative" @scroll="addHeader">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <section class="banner flex items-center justify-center min-h-screen relative w-full" :style="{'background-image': 'url(' + require('../assets/banner.jpg') + ')'}" style="background-size: auto 100%; height:562px">
+    <section class="banner flex items-center justify-center min-h-screen relative w-full z-10" :style="{'background-image': 'url(' + require('../assets/banner.jpg') + ')'}" style="background-size: auto 100%; height:562px">
       <!-- <label class="bg-black opacity-50 absolute h-full w-full top-0 left-0 z-10"></label> -->
-      <div class="absolute flex font-extrabold font-robo items-center justify-between px-16 py-2 text-gray-100 top-0 w-full">
-        <img src="../assets/logo.png" class="h-12 my-1">
-        <div class="flex text-sm text-gold cursor-pointer">
+      <div class="flex fixed font-extrabold font-robo items-center justify-between px-16 py-2 text-gray-100 top-0 w-full" :class="{ 'bg-blue-1000' : header == 'fix' }">
+        <img src="../assets/logo.png" :class="header == 'fix' ? 'h-8' : 'h-12'">
+        <div class="flex text-gold font-lob tracking-widest cursor-pointer" :class="header == 'fix' ? 'text-xs' : 'text-sm'">
           <p class="mx-2 border-b-2 border-gold">
-            HOME
+            Home
           </p>
           <p class="mx-2 hover:border-b-2 border-gold">
-            OUR PROCESS
+            Our Process
           </p>
           <p class="mx-2 hover:border-b-2 border-gold">
-            ABOUT US
+            About Us
           </p>
           <p class="mx-2 hover:border-b-2 border-gold">
-            CONTACT US
+            Contact Us
           </p>
           <p class="mx-2 hover:border-b-2 border-gold">
-            ADMIN
+            Admin
           </p>
         </div>
       </div>
@@ -47,13 +47,13 @@
       </p>
     </div>
     <section class="gallery flex flex-wrap justify-around pb-16" v-if="(filter == 'All' || filter == 'Jadau') && product">
-      <div v-for="card in cards" :key="card.id" class="group bg-white border border-gray-400 cursor-pointer duration-500 ease-in-out flex flex-col hover:-translate-y-1 hover:scale-110 items-center justify-center mx-1 my-3 p-2 relative rounded-lg shadow-lg transform transition w-1/4">
-        <div class="relative">
-          <img class="rounded-t" :src="card.url" />
-          <label class="flex justify-center items-center bg-black opacity-0 rounded-lg hover:opacity-50 absolute h-full w-full top-0 left-0 z-10">
+      <div v-for="(card, index) in cards" :key="index" class="group bg-white border border-gray-400 cursor-pointer duration-500 ease-in-out h-full flex flex-col hover:-translate-y-1 hover:scale-110 items-center justify-center my-3 p-2 relative rounded-lg shadow-lg transform transition" style="flex: 0 28%">
+        <div class="relative overflow-hidden w-full" style="padding-top:75%">
+          <label @click="expandFunc(card, index)" class="flex justify-center items-center bg-black opacity-0 rounded-lg hover:opacity-50 absolute h-full w-full top-0 left-0 z-10 cursor-pointer">
+            <i class="fas fa-expand text-4xl absolute invisible group-hover:visible text-golden" />
           </label>
+          <img class="rounded-t absolute inset-0" :src="card.url" />
         </div>
-        <i @click="(expandImage = !expandImage), expandFunc(card)" class="fas fa-expand text-4xl text-white absolute invisible group-hover:visible z-10 hover:text-gold cursor-pointer" />
         <h4 class="pt-2 px-3 font-pop font-medium text-center text-gray-700 text-sm">{{card.name}}</h4>
       </div>
     </section>
@@ -63,13 +63,19 @@
       </div>
     </section>
     <div v-if="expandImage == true" class="fixed h-full w-full flex justify-center items-center top-0 left-0">
-      <label @click="expandImage = false" class="bg-black opacity-50 absolute h-full w-full top-0 left-0 z-10"></label>
-      <div v-on-clickaway="away" class="w-4/5 p-2 border-gray-400 border bg-white rounded-lg z-20">
-          <img class="rounded-t" :src="expandKey.url" />
+      <label class="bg-black opacity-50 absolute h-full w-full top-0 left-0 z-10"></label>
+      <button @click.stop="prev" :class="{'invisible': ! hasPrev()}" class="bg-white py-6 px-3 border border-golden z-10 rounded-lg border-r-0 rounded-r-none text-lg font-bold text-golden cursor-pointer">
+        <i class="fa fa-chevron-left" />
+      </button>
+      <div v-on-clickaway="away" class="p-2 border-gold border bg-white rounded-lg z-20">
+          <img class="rounded-t h-screen90" :src="cards[selectedIndex].url" />
       </div>
+      <button @click.stop="next" class="bg-white py-6 px-3 border border-golden z-10 rounded-lg border-l-0 rounded-l-none text-lg font-bold text-golden cursor-pointer" :class="{'invisible': ! hasNext()}">
+        <i class="fa fa-chevron-right" />
+      </button>
     </div>
     <section>
-      <div class="py-16 px-8 flex font-pop text-center" style="background: #051620;">
+      <div class="py-16 px-8 flex font-pop text-center bg-blue-1000" style="background: #051620;">
         <div class="flex items-center justify-center w-1/5">
           <img src="../assets/km2.png">
         </div>
@@ -129,10 +135,52 @@ export default {
   data () {
     return {
       filter: 'All',
+      header: 'no fix',
       expandImage: false,
       expandKey: null,
       product: true,
+      selectedIndex: 0,
       cards: [
+        {
+          id: '001',
+          url: 'img/icons/no-free/29.png',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '002',
+          url: 'img/icons/no-free/26.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '003',
+          url: 'img/icons/no-free/24.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '004',
+          url: 'img/icons/no-free/22.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '005',
+          url: 'img/icons/no-free/23.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '006',
+          url: 'img/icons/no-free/25.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '007',
+          url: 'img/icons/no-free/27.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '008',
+          url: 'img/icons/no-free/28.png',
+          name: 'Duposta Jadau Set'
+        },
         {
           id: '001',
           url: 'img/icons/maxresdefault.jpg',
@@ -140,12 +188,112 @@ export default {
         },
         {
           id: '002',
-          url: 'img/icons/maxresdefault.jpg',
+          url: 'img/icons/2.jpg',
           name: 'Duposta Jadau Set'
         },
         {
           id: '003',
-          url: 'img/icons/maxresdefault.jpg',
+          url: 'img/icons/3.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '004',
+          url: 'img/icons/4.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '005',
+          url: 'img/icons/5.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '006',
+          url: 'img/icons/6.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '007',
+          url: 'img/icons/7.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '008',
+          url: 'img/icons/8.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '009',
+          url: 'img/icons/9.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0010',
+          url: 'img/icons/10.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0011',
+          url: 'img/icons/stones.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0021',
+          url: 'img/icons/no-free/1.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0022',
+          url: 'img/icons/no-free/22.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0012',
+          url: 'img/icons/no-free/11.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0013',
+          url: 'img/icons/12.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0014',
+          url: 'img/icons/13.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0015',
+          url: 'img/icons/14.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0016',
+          url: 'img/icons/15.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0017',
+          url: 'img/icons/16.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0018',
+          url: 'img/icons/17.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0019',
+          url: 'img/icons/18.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0020',
+          url: 'img/icons/19.jpg',
+          name: 'Duposta Jadau Set'
+        },
+        {
+          id: '0023',
+          url: 'img/icons/20.jpg',
           name: 'Duposta Jadau Set'
         }
       ]
@@ -158,12 +306,68 @@ export default {
   },
   methods: {
     away: function () {
-      this.actionDrawer = false
+      this.expandImage = false
     },
-    expandFunc (card) {
+    expandFunc (card, index) {
+      this.expandImage = true
+      this.selectedIndex = index
       this.expandKey = { ...card }
-      console.log(this.expandKey)
+      console.log(this.expandKey, this.selectedIndex)
+    },
+
+    hasNext () {
+      return this.selectedIndex + 1 < this.cards.length
+    },
+    hasPrev () {
+      return this.selectedIndex - 1 >= 0
+    },
+    prev () {
+      if (this.hasPrev()) {
+        this.selectedIndex -= 1
+      }
+    },
+    next () {
+      if (this.hasNext()) {
+        this.selectedIndex += 1
+      }
+    },
+    onKeydown (e) {
+      if (this.expandImage) {
+        switch (e.key) {
+          case 'ArrowRight':
+            this.next()
+            break
+          case 'ArrowLeft':
+            this.prev()
+            break
+          case 'ArrowDown':
+          case 'ArrowUp':
+          case ' ':
+            e.preventDefault()
+            break
+          case 'Escape':
+            this.away()
+            break
+        }
+      }
+    },
+    addHeader (event) {
+      if (window.scrollY > window.innerHeight - 100) {
+        this.header = 'fix'
+      } else {
+        this.header = 'no-fix'
+      }
     }
+  },
+  created () {
+    window.addEventListener('scroll', this.addHeader)
+  },
+  destroyed () {
+    window.removeEventListener('keydown', this.onKeydown)
+    window.removeEventListener('scroll', this.addHeader)
+  },
+  mounted () {
+    window.addEventListener('keydown', this.onKeydown)
   }
 }
 </script>
