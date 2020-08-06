@@ -34,29 +34,31 @@
     </section>
     <section class="flex items-center justify-center">
       <p class="text-xl text-blue-1000 font-fredoka"> Popular Categories : </p>
-      <div v-for="(category, index) in categories" :key="index" class="p-2 my-4 mx-6 border border-golden text-gold bg-blue-1000 shadow-lg rounded-lg tracking-widest font-lob" :class="{'text-sm text-gray-300' : index !== 0}">
-        <div class="overflow-hidden" style="height:100px">
-          <img :src="category.url" :style="{width : index == 0 ? '170px' : '130px'}">
+      <div @click="selectCategory(category, index)" v-for="(category, index) in categories" :key="index" class="p-2 my-4 mx-6 border border-golden text-gold bg-blue-1000 cursor-pointer shadow-lg rounded-lg tracking-widest font-lob" :class="{'text-sm text-gray-300' : selected !== index}">
+        <div class="overflow-hidden" :style="{height : selected == index ? '125px' : '100px'}">
+          <img :src="category.url" :style="{width : selected == index ? '170px' : '130px'}">
         </div>
         <p class="text-center pt-2">{{ category.name }}</p>
       </div>
     </section>
     <section class="bg-white">
-      <div class="mx-24 py-12 flex items-center">
-        <img class="w-1/2 mr-8" :src="url">
-        <div class="ml-8">
-          <h2 class="text-4xl text-center font-serif text-gold font-bold">KUNDAN MEENA</h2>
-          <p class="py-3 text-sm text-gray-800 text-justify font-serif"> The traditional and elegant Kundan Meena Jewellery is our forte at Shree G. K. Chudiwalas. It is one of the oldest forms of jewellery making, crafted with an unadulterated precision and skills that have been carried over for centuries. A true heritage of the blend between Mughal and Rajasthani cultures, Kundan Meena jewellery symbolizes ethereal beauty, elegance and an unparalleled craftsmanship. </p>
-          <div class="border border-gray-700 px-4 py-2 mx-auto text-gray-700 w-32 font-bold text-center font-mono">Discover</div>
+      <transition name="fade">
+        <div class="mx-24 py-12 flex items-center" :key="selectedObj.name">
+          <img class="w-1/2 mr-8" :src="selectedObj.url">
+          <div class="ml-8">
+            <h2 class="text-4xl text-center font-serif text-gold font-bold">{{selectedObj.name}}</h2>
+            <p class="py-3 text-sm text-gray-800 text-justify font-serif"> The traditional and elegant Kundan Meena Jewellery is our forte at Shree G. K. Chudiwalas. It is one of the oldest forms of jewellery making, crafted with an unadulterated precision and skills that have been carried over for centuries. A true heritage of the blend between Mughal and Rajasthani cultures, Kundan Meena jewellery symbolizes ethereal beauty, elegance and an unparalleled craftsmanship. </p>
+            <router-link to="/categories" class="border border-gray-700 px-4 py-2 mx-auto text-gray-700 w-32 block font-bold text-center font-mono">Discover</router-link>
+          </div>
         </div>
-      </div>
+      </transition>
     </section>
     <section>
       <div class="py-16 px-8 flex font-pop text-center bg-blue-1000" style="background: #051620;">
         <div class="flex items-center justify-center w-1/5">
           <img src="../assets/km2.png">
         </div>
-        <div class="w-4/5 px-8 text-gold ">
+        <div class="w-4/5 px-8 text-gold">
           <h2 class="text-3xl mb-6 font-bold">
             Kundan Meena Jadau Jewelry
           </h2>
@@ -85,7 +87,10 @@ export default {
   // mixins: [clickaway],
   data () {
     return {
+      show: false,
       header: 'no fix',
+      selected: 0,
+      selectedObj: null,
       categories: [{
         name: 'Kundan Meena',
         url: 'img/icons/no-free/29.png'
@@ -100,7 +105,7 @@ export default {
         url: 'img/icons/no-free/28.png'
       }, {
         name: 'Siver Jewellery',
-        url: 'img/icons/no-free/26.png'
+        url: 'img/icons/no-free/silver.jpg'
       }],
       url: 'img/icons/no-free/29.png'
     }
@@ -162,6 +167,15 @@ export default {
     //     }
     //   }
     // },
+    selectCategory (category, index) {
+      console.log('hello')
+      if (this.selectedObj == null) {
+        this.selectedObj = this.categories[0]
+      } else {
+        this.selectedObj = { ...category }
+        this.selected = index
+      }
+    },
     addHeader (event) {
       if (window.scrollY > window.innerHeight - 100) {
         this.header = 'fix'
@@ -172,6 +186,7 @@ export default {
   },
   created () {
     window.addEventListener('scroll', this.addHeader)
+    this.selectCategory()
   },
   destroyed () {
     // window.removeEventListener('keydown', this.onKeydown)
@@ -186,5 +201,13 @@ export default {
 .glow {
     /* text-shadow: 2px 2px 5px #ffd801; */
 }
-
+/* .fade-leave-active {
+  transition: opacity 5s linear;
+} */
+.fade-enter-active {
+  transition: opacity .5s linear;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
