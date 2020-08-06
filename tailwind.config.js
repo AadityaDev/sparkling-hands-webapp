@@ -18,7 +18,8 @@ module.exports = {
             black: '#000',
             white: '#fff',
             lightgold: '#efde784d',
-            gold: '#efde78',
+            goldsecondary: '#f5c55d',
+            gold: '#f5c55d',
             golden: '#ffd800',
             main: '#b1997d',
 
@@ -256,7 +257,7 @@ module.exports = {
             robo: ['roboto', 'sans-serif'],
             pop: ['poppins', 'sans-serif'],
             lob: ['lobster', 'cursive'],
-            fredoka: ['Fredoka One', 'cursive'],
+            fredoka: ['Fredoka One', 'cursive']
         },
         fontSize: {
             xs: '0.75rem',
