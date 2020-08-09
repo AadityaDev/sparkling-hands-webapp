@@ -22,6 +22,7 @@ module.exports = {
             gold: '#f5c55d',
             golden: '#ffd800',
             main: '#b1997d',
+            goldlight: '#f5c55d75',
 
             gray: {
                 100: '#f7fafc',
@@ -33,6 +34,17 @@ module.exports = {
                 700: '#4a5568',
                 800: '#2d3748',
                 900: '#1a202c'
+            },
+            darkgray: {
+                100: '#DCDCDC',
+                200: '#D3D3D3',
+                300: '#C0C0C0',
+                400: '#A9A9A9',
+                500: '#808080',
+                600: '#696969',
+                700: '#778899',
+                800: '#708090',
+                900: '#2F4F4F'
             },
             red: {
                 100: '#fff5f5',
@@ -99,7 +111,8 @@ module.exports = {
                 700: '#2b6cb0',
                 800: '#2c5282',
                 900: '#2a4365',
-                1000: '#051620'
+                1000: '#051620',
+                1100: '#113d56'
             },
             indigo: {
                 100: '#ebf4ff',
@@ -651,7 +664,7 @@ module.exports = {
         borderOpacity: ['responsive', 'hover', 'focus'],
         borderRadius: ['responsive'],
         borderStyle: ['responsive'],
-        borderWidth: ['responsive', 'hover'],
+        borderWidth: ['responsive', 'hover', 'focus'],
         boxShadow: ['responsive', 'hover', 'focus'],
         boxSizing: ['responsive'],
         cursor: ['responsive'],

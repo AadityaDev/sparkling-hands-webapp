@@ -13,13 +13,13 @@
             Our Process
           </p>
           <p class="mx-2 hover:border-b-2 border-gold">
-            About Us
+            Shop
           </p>
           <p class="mx-2 hover:border-b-2 border-gold">
             Contact Us
           </p>
           <p class="mx-2 hover:border-b-2 border-gold">
-            Admin
+            Categories
           </p>
         </div>
       </div>
@@ -32,23 +32,25 @@
         </h2>
       </div>
     </section>
-    <section class="flex items-center justify-center">
-      <p class="text-xl text-blue-1000 font-fredoka"> Popular Categories : </p>
-      <div @click="selectCategory(category, index)" v-for="(category, index) in categories" :key="index" class="p-2 my-4 mx-6 border border-golden text-gold bg-blue-1000 cursor-pointer shadow-lg rounded-lg tracking-widest font-lob" :class="{'text-sm text-gray-300' : selected !== index}">
-        <div class="overflow-hidden" :style="{height : selected == index ? '125px' : '100px'}">
-          <img :src="category.url" :style="{width : selected == index ? '170px' : '130px'}">
+    <section class="flex flex-col items-center justify-center">
+      <p class="text-xl text-blue-1000 font-fredoka mt-4"> Popular Jewellery Types </p>
+      <div class="flex items-center justify-center">
+        <div @click="selectCategory(category, index)" v-for="(category, index) in categories" :key="index" class="p-2 my-4 mx-6 border border-golden text-gold bg-blue-1000 cursor-pointer shadow-lg rounded-lg tracking-widest font-lob" :class="{'text-sm text-gray-300' : selected !== index}">
+          <div class="overflow-hidden" :style="{height : selected == index ? '125px' : '100px'}">
+            <img :src="category.url" :style="{width : selected == index ? '170px' : '130px'}">
+          </div>
+          <p class="text-center pt-2">{{ category.name }}</p>
         </div>
-        <p class="text-center pt-2">{{ category.name }}</p>
       </div>
     </section>
-    <section class="bg-white">
+    <section class="bg-white py-12">
       <transition name="fade">
-        <div class="mx-24 py-12 flex items-center" :key="selectedObj.name">
+        <div class="mx-24 flex items-center" :key="selectedObj.name">
           <img class="w-1/2 mr-8" :src="selectedObj.url">
           <div class="ml-8">
             <h2 class="text-4xl text-center font-serif text-gold font-bold">{{selectedObj.name}}</h2>
-            <p class="py-3 text-sm text-gray-800 text-justify font-serif"> The traditional and elegant Kundan Meena Jewellery is our forte at Shree G. K. Chudiwalas. It is one of the oldest forms of jewellery making, crafted with an unadulterated precision and skills that have been carried over for centuries. A true heritage of the blend between Mughal and Rajasthani cultures, Kundan Meena jewellery symbolizes ethereal beauty, elegance and an unparalleled craftsmanship. </p>
-            <router-link to="/categories" class="border border-gray-700 px-4 py-2 mx-auto text-gray-700 w-32 block font-bold text-center font-mono">Discover</router-link>
+            <p class="my-3 text-sm text-gray-800 text-justify font-serif"> The traditional and elegant Kundan Meena Jewellery is our forte at Shree G. K. Chudiwalas. It is one of the oldest forms of jewellery making, crafted with an unadulterated precision and skills that have been carried over for centuries. A true heritage of the blend between Mughal and Rajasthani cultures, Kundan Meena jewellery symbolizes ethereal beauty, elegance and an unparalleled craftsmanship. </p>
+            <router-link to="/categories" class="border border-gray-700 px-4 py-2 mx-auto text-gray-700 w-32 block font-bold text-center font-mono">See All</router-link>
           </div>
         </div>
       </transition>
@@ -104,7 +106,7 @@ export default {
         name: 'Fusion Jewellery',
         url: 'img/icons/no-free/28.png'
       }, {
-        name: 'Siver Jewellery',
+        name: 'Silver Jewellery',
         url: 'img/icons/no-free/silver.jpg'
       }],
       url: 'img/icons/no-free/29.png'
@@ -199,7 +201,7 @@ export default {
 </script>
 <style scoped>
 .glow {
-    /* text-shadow: 2px 2px 5px #ffd801; */
+    letter-spacing: normal;
 }
 /* .fade-leave-active {
   transition: opacity 5s linear;
@@ -210,4 +212,22 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+/* .fade-leave-active {
+   transition-duration: 2.9s;
+   transition-timing-function: linear;
+} */
+
+/* .fade-enter-active {
+   transition-duration: 1s;
+   transition-timing-function: linear;
+}
+.fade-enter-to, .fade-leave {
+   max-height: 800px;
+   overflow: hidden;
+}
+
+.fade-enter, .fade-leave-to {
+   overflow: hidden;
+   max-height: 0;
+} */
 </style>
