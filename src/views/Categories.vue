@@ -38,14 +38,21 @@
     <section class="w-full flex items-start relative mt-16">
       <div class="bg-gray-100 flex flex-col min-h-screen max-h-screen fixed pt-8 px-6 w-1/6">
         <div v-for="category in categories" :key="category.id" class="mb-4">
-          <p @click="filteredCards(category.tag)" class="flex items-center justify-between border rounded-lg px-3 py-1 font-semibold font-pop text-sm" :class="category.tag !== tag ? 'bg-goldlight text-gray-700 border-gray-500 cursor-pointer' : 'bg-blue-1100 text-gold border-blue-1100'">
-            {{category.name}}
-            <i class="fa fa-chevron-down" />
-          </p>
+          <div @click="filteredCards(category)" class="relative border rounded-lg py-1 font-semibold font-pop text-sm" :class="category.tag !== tag ? 'bg-goldlight text-gray-700 border-gray-500 cursor-pointer' : 'bg-blue-1100 text-gold border-blue-1100'">
+            <div class="border-goldlight flex items-center justify-between px-3" :class="{'border-b pb-1' : category.tag === tag && category.tag !== 'all'}">
+              {{category.name}}
+              <i :class="category.tag === tag ? 'fa fa-chevron-down' : 'fa fa-chevron-right'" />
+            </div>
+            <div class="px-6 underline relative text-xs w-full" v-if="category.tag === tag" style="text-underline-position: under">
+              <div @click.stop="filteredCards(subCategory)" v-for="subCategory in category.subCategories" :key="subCategory.id" class="pt-1 cursor-pointer" :class="subCategory.subTag === subTag ? 'font-bold' : 'font-thin'">
+                <li>{{subCategory.name}}</li>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="bg-white w-5/6 py-6 px-16 ml-auto">
-        <p class="text-xl font-pop font-bold text-gray-700 pb-6">Kundan Meena Jewellery<span v-if="filtered" class="text-gray-800 font-normal text-lg"><i class="fa fa-chevron-right px-2 text-sm" />All</span></p>
+        <p class="text-xl font-pop font-bold text-gray-700 pb-6">{{ headingName }}<span class="font-normal text-lg"><i class="fa fa-chevron-right px-2 text-sm" />{{subHeadingName}}</span></p>
         <section class="gallery bg-gray-100 rounded-lg">
           <div class="w-full flex items-center justify-between">
             <div class="w-4/6 px-8 mt-6 relative">
@@ -72,11 +79,11 @@
               <h4 class="pt-2 px-3 font-pop font-medium text-center text-gray-700 text-sm">{{card.name}}</h4>
             </div>
           </div>
-        </section>
-        <section class="py-12 flex justify-center items-center">
+        <section v-if="noCards" class="py-12 flex justify-center items-center">
           <div class="h-40 border-gray-400 border rounded-lg shadow-lg bg-white flex justify-center items-center">
             <p class="text-gray-700 font-pop font-semibold mx-8">Sorry! No Posts Found for this category.</p>
           </div>
+        </section>
         </section>
         <div v-if="expandImage == true" class="fixed h-full w-full flex justify-center items-center top-0 left-0">
           <label class="bg-black opacity-50 absolute h-full w-full top-0 left-0 z-10"></label>
@@ -114,7 +121,10 @@ export default {
       selectedIndex: 0,
       selectedCategory: null,
       noCards: true,
-      tag: 'all'
+      tag: 'all',
+      subTag: 'all',
+      headingName: 'All Collection',
+      subHeadingName: 'All'
     }
   },
   components: {
@@ -134,11 +144,22 @@ export default {
     away: function () {
       this.expandImage = false
     },
-    filteredCards (tag) {
-      this.tag = tag
+    filteredCards (category) {
       let filtered = this.cards
-      if (tag !== 'all') {
-        filtered = filtered.filter((x) => x.tag === tag)
+      if (category.tag && category.tag !== 'all') {
+        this.tag = category.tag
+        this.headingName = category.name
+        filtered = filtered.filter((x) => x.tag === category.tag)
+        if (filtered.length < 1) {
+          this.noCards = true
+        } else {
+          this.noCards = false
+        }
+      }
+      if (category.subTag !== undefined) {
+        this.subHeadingName = category.name
+        this.subTag = category.subTag
+        filtered = filtered.filter((x) => x.subTag === category.subTag)
         if (filtered.length < 1) {
           this.noCards = true
         } else {

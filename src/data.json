@@ -4,55 +4,122 @@
         "kundanMeena": "Kundan Meena, flaunted by the Royals, appreciated by the Elite. Kundan Meena is an amalgam of an art form & a jewelry style.Meena is the literal Hindi translation of Enameling, which a handcrafted work of fusing a myriad of colors in Gold, while Kundan is the literal Marwari translation of 24 K Pure Gold, which when united on a piece of jewelry, make a handcrafted piece of art, in the form of jewelry, known as Kundan Meena.The Meenakari is an ancient form of Persian Art, whichwas also prevalent in Ancient Rajasthani Architecture & is seen in the royal Havelis(royal mansions) of Bikaner, Jodhpur, Jaipur & Udaipur. While Kundan is also refered to a form of traditional Rajasthani form of jewelry, which uses pure gold foils & lac toset gemstones in a the Kingdoms in India, & later flourished during the Mughal reign in India, which proliferated as the now famous Kundan Meena Jewelry. < br > < br > Suranas excel in this rare form of jewelry & has carried on the tradition of setting uncut diamonds & natural gemstones in 24 K Pure Gold, in its collection of Kundan Meena Jewelry.We stud uncut diamonds, rubies, emeralds & sapphires on the front of the jewelry piece, while the enameling is done on the sides & the back of the jewelry piece.I cannnot put it better than one of my clients, 'You have confused me now!Should I wear this with the diamonds showing or the enamel ? '<br><br> Innovations in Kundan Meena : With changing times, we realized the need to adapt to the changing needs of people & have thus innovated & introduced new collections in Kundan Meena, including the Peacock Fusion Collection & Enamel with Brilliant Cut Diamonds.These collection are much lighter in weight & have a fragrant touch of full cut diamonds to bring out the beauty of the enamel with the value of the diamonds.",
         "categories": [{
                 "id": 0,
-                "name": "All",
+                "name": "All Collection",
                 "tag": "all"
             },
             {
                 "id": 1,
                 "name": "kundan Meena Jewellery",
-                "tag": "kundan-meena"
+                "tag": "kundan-meena",
+                "subCategories": [{
+                    "id": 1,
+                    "name": "Navratna Work",
+                    "subTag": "navratna"
+                }, {
+                    "id": 2,
+                    "name": "Pachranga Work",
+                    "subTag": "pachranga"
+                }, {
+                    "id": 3,
+                    "name": "Gulabi Meena Work",
+                    "subTag": "gulabi"
+                }, {
+                    "id": 4,
+                    "name": "Chitai/Carving Work",
+                    "subTag": "chitai"
+                }, {
+                    "id": 5,
+                    "name": "Blue Pottery Work",
+                    "subTag": "blue"
+                }]
             },
             {
                 "id": 2,
                 "name": "22kt Jewellery",
-                "tag": "22kt"
+                "tag": "22kt",
+                "subCategories": [{
+                    "id": 1,
+                    "name": "Navratna Work",
+                    "subTag": "navratna"
+                }]
             },
             {
                 "id": 3,
                 "name": "Stones/Diamonds",
-                "tag": "stones"
+                "tag": "stones",
+                "subCategories": [{
+                    "id": 1,
+                    "name": "Navratna Work",
+                    "subTag": "navratna"
+                }]
             },
             {
                 "id": 4,
                 "name": "Fusion Jewellery",
-                "tag": "fusion"
+                "tag": "fusion",
+                "subCategories": [{
+                    "id": 1,
+                    "name": "Navratna Work",
+                    "subTag": "navratna"
+                }]
             },
             {
                 "id": 5,
                 "name": "Silver Jewellery",
-                "tag": "silver"
+                "tag": "silver",
+                "subCategories": [{
+                    "id": 1,
+                    "name": "Navratna Work",
+                    "subTag": "navratna"
+                }]
             },
             {
                 "id": 6,
                 "name": "Brass Jewellery",
-                "tag": "brass"
+                "tag": "brass",
+                "subCategories": [{
+                    "id": 1,
+                    "name": "Navratna Work",
+                    "subTag": "navratna"
+                }]
             },
             {
                 "id": 7,
-                "name": "Antique Jewellery",
-                "tag": "antique"
+                "name": "Imitation Jewellery",
+                "tag": "imitation",
+                "subCategories": [{
+                    "id": 1,
+                    "name": "Navratna Work",
+                    "subTag": "navratna"
+                }]
             },
             {
                 "id": 8,
+                "name": "Antique Jewellery",
+                "tag": "antique",
+                "subCategories": [{
+                    "id": 1,
+                    "name": "Navratna Work",
+                    "subTag": "navratna"
+                }]
+            },
+            {
+                "id": 9,
                 "name": "Artificial Jewellery",
-                "tag": "artificial"
+                "tag": "artificial",
+                "subCategories": [{
+                    "id": 1,
+                    "name": "Navratna Work",
+                    "subTag": "navratna"
+                }]
             }
         ],
         "cards": [{
                 "id": "001",
                 "url": "img/icons/no-free/29.png",
                 "name": "Duposta Jadau Set",
-                "tag": "kundan-meena"
+                "tag": "kundan-meena",
+                "subTag": "navratna"
             },
             {
                 "id": "002",
