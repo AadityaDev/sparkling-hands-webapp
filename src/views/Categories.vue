@@ -62,7 +62,7 @@
             <div class="w-1/6 mt-6 mx-8">
               <div class="relative">
               <select class="w-full cursor-pointer flex justify-between items-center px-3 py-1 text-xs bg-white border border-gray-500 rounded text-gray-600 focus:border-gray-700 outline-none">
-                <option v-for="n in 5" :key="n">All</option>
+                <option v-for="n in 5" :key="n">e.g. Earrings, Set...</option>
               </select>
               <i class="fa fa-chevron-down absolute mr-3 pt-2 right-0 text-gray-600 text-xs top-0" />
             </div>
@@ -91,7 +91,7 @@
             <i class="fa fa-chevron-left" />
           </button>
           <div v-on-clickaway="away" class="p-2 border-gold border bg-white rounded-lg z-20">
-              <img class="rounded-t h-screen90" :src="cards[selectedIndex].url" />
+              <img class="rounded-t h-screen90" :src="selectedCategory[selectedIndex].url" />
           </div>
           <button @click.stop="next" class="bg-white py-6 px-3 border border-golden z-10 rounded-lg border-l-0 rounded-l-none text-lg font-bold text-golden cursor-pointer" :class="{'invisible': ! hasNext()}">
             <i class="fa fa-chevron-right" />
@@ -149,17 +149,26 @@ export default {
       if (category.tag && category.tag !== 'all') {
         this.tag = category.tag
         this.headingName = category.name
+        this.subHeadingName = 'All'
+        this.subTag = 'all'
         filtered = filtered.filter((x) => x.tag === category.tag)
         if (filtered.length < 1) {
           this.noCards = true
         } else {
           this.noCards = false
         }
-      }
-      if (category.subTag !== undefined) {
+      } else if (category.subTag !== undefined) {
         this.subHeadingName = category.name
         this.subTag = category.subTag
         filtered = filtered.filter((x) => x.subTag === category.subTag)
+        if (filtered.length < 1) {
+          this.noCards = true
+        } else {
+          this.noCards = false
+        }
+      } else {
+        this.tag = category.tag
+        this.headingName = category.name
         if (filtered.length < 1) {
           this.noCards = true
         } else {
@@ -176,7 +185,7 @@ export default {
     },
 
     hasNext () {
-      return this.selectedIndex + 1 < this.cards.length
+      return this.selectedIndex + 1 < this.selectedCategory.length
     },
     hasPrev () {
       return this.selectedIndex - 1 >= 0

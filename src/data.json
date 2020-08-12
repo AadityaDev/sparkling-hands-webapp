@@ -115,191 +115,190 @@
             }
         ],
         "cards": [{
-                "id": "001",
+                "id": "0",
+                "url": "img/icons/maxresdefault.jpg",
+                "name": "Duposta Jadau Set",
+                "tag": "kundan-meena"
+            }, {
+                "id": "1",
                 "url": "img/icons/no-free/29.png",
                 "name": "Duposta Jadau Set",
                 "tag": "kundan-meena",
                 "subTag": "navratna"
             },
             {
-                "id": "002",
+                "id": "2",
                 "url": "img/icons/no-free/26.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "kundan-meena"
             },
             {
-                "id": "003",
+                "id": "3",
                 "url": "img/icons/no-free/24.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "kundan-meena"
             },
             {
-                "id": "004",
+                "id": "4",
                 "url": "img/icons/no-free/22.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "kundan-meena"
             },
             {
-                "id": "005",
+                "id": "5",
                 "url": "img/icons/no-free/23.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "kundan-meena"
             },
             {
-                "id": "006",
+                "id": "6",
                 "url": "img/icons/no-free/25.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "kundan-meena"
             },
             {
-                "id": "007",
+                "id": "7",
                 "url": "img/icons/no-free/27.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "kundan-meena"
             },
             {
-                "id": "008",
+                "id": "8",
                 "url": "img/icons/no-free/28.png",
                 "name": "Duposta Jadau Set",
                 "tag": "stones"
             },
             {
-                "id": "001",
-                "url": "img/icons/maxresdefault.jpg",
-                "name": "Duposta Jadau Set",
-                "tag": "stones"
-            },
-            {
-                "id": "002",
-                "url": "img/icons/2.jpg",
-                "name": "Duposta Jadau Set",
-                "tag": "stones"
-            },
-            {
-                "id": "003",
-                "url": "img/icons/3.jpg",
-                "name": "Duposta Jadau Set",
-                "tag": "stones"
-            },
-            {
-                "id": "004",
-                "url": "img/icons/4.jpg",
-                "name": "Duposta Jadau Set",
-                "tag": "stones"
-            },
-            {
-                "id": "005",
-                "url": "img/icons/5.jpg",
-                "name": "Duposta Jadau Set",
-                "tag": "silver"
-            },
-            {
-                "id": "006",
-                "url": "img/icons/6.jpg",
-                "name": "Duposta Jadau Set",
-                "tag": "silver"
-            },
-            {
-                "id": "007",
-                "url": "img/icons/7.jpg",
-                "name": "Duposta Jadau Set",
-                "tag": "silver"
-            },
-            {
-                "id": "008",
-                "url": "img/icons/8.jpg",
-                "name": "Duposta Jadau Set",
-                "tag": "silver"
-            },
-            {
-                "id": "009",
+                "id": "9",
                 "url": "img/icons/9.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "silver"
             },
             {
-                "id": "0010",
+                "id": "10",
                 "url": "img/icons/10.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "22kt"
             },
             {
-                "id": "0011",
+                "id": "11",
                 "url": "img/icons/stones.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "22kt"
             },
             {
-                "id": "0021",
+                "id": "21",
                 "url": "img/icons/no-free/1.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "22kt"
             },
             {
-                "id": "0022",
+                "id": "22",
                 "url": "img/icons/no-free/22.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "22kt"
             },
             {
-                "id": "0012",
+                "id": "12",
                 "url": "img/icons/no-free/11.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "22kt"
             },
             {
-                "id": "0013",
+                "id": "13",
                 "url": "img/icons/12.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "22kt"
             },
             {
-                "id": "0014",
+                "id": "14",
                 "url": "img/icons/13.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "fusion"
             },
             {
-                "id": "0015",
+                "id": "15",
                 "url": "img/icons/14.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "fusion"
             },
             {
-                "id": "0016",
+                "id": "16",
                 "url": "img/icons/15.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "fusion"
             },
             {
-                "id": "0017",
+                "id": "17",
                 "url": "img/icons/16.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "fusion"
             },
             {
-                "id": "0018",
+                "id": "18",
                 "url": "img/icons/17.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "fusion"
             },
             {
-                "id": "0019",
+                "id": "19",
                 "url": "img/icons/18.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "fusion"
             },
             {
-                "id": "0020",
+                "id": "20",
                 "url": "img/icons/19.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "fusion"
             },
             {
-                "id": "0023",
+                "id": "23",
                 "url": "img/icons/20.jpg",
                 "name": "Duposta Jadau Set",
                 "tag": "antique"
+            },
+            {
+                "id": "25",
+                "url": "img/icons/2.jpg",
+                "name": "Duposta Jadau Set",
+                "tag": "stones"
+            },
+            {
+                "id": "26",
+                "url": "img/icons/3.jpg",
+                "name": "Duposta Jadau Set",
+                "tag": "stones"
+            },
+            {
+                "id": "27",
+                "url": "img/icons/4.jpg",
+                "name": "Duposta Jadau Set",
+                "tag": "stones"
+            },
+            {
+                "id": "28",
+                "url": "img/icons/5.jpg",
+                "name": "Duposta Jadau Set",
+                "tag": "silver"
+            },
+            {
+                "id": "29",
+                "url": "img/icons/6.jpg",
+                "name": "Duposta Jadau Set",
+                "tag": "silver"
+            },
+            {
+                "id": "30",
+                "url": "img/icons/7.jpg",
+                "name": "Duposta Jadau Set",
+                "tag": "silver"
+            },
+            {
+                "id": "31",
+                "url": "img/icons/8.jpg",
+                "name": "Duposta Jadau Set",
+                "tag": "silver"
             }
         ]
     }
