@@ -32,7 +32,7 @@
         </h2>
       </div>
     </section>
-    <div v-if="user" class="text-lg font-bold text-green-500 text-center">You are logged in!</div>
+    <div v-if="user" class="text-lg font-bold text-green-500 text-center">You are logged in!{{user}}</div>
     <section class="flex flex-col items-center justify-center">
       <p class="text-xl text-blue-1000 font-fredoka mt-4"> Popular Jewellery Types </p>
       <div class="flex items-center justify-center">
@@ -83,6 +83,7 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 // import { mixin as clickaway } from 'vue-clickaway'
+import { mapGetters } from 'vuex'
 import allData from '../data.json'
 
 export default {
@@ -117,6 +118,10 @@ export default {
   //   HelloWorld
   // }
   computed: {
+    // map `this.user` to `this.$store.getters.user`
+    ...mapGetters({
+      user: 'user'
+    }),
     dataSet () {
       const story = allData.allData.kundanMeena
       console.log(allData.allData.kundanMeena)
@@ -190,6 +195,7 @@ export default {
   created () {
     window.addEventListener('scroll', this.addHeader)
     this.selectCategory()
+    console.log(this.user, 'gg')
   },
   destroyed () {
     // window.removeEventListener('keydown', this.onKeydown)
