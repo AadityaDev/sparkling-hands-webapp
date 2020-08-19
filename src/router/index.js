@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import firebase from 'firebase'
+import { auth } from '../../firebase'
 // import Home from '../views/Home.vue'
 import Categories from '../views/Categories.vue'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
 import Dashboard from '../views/Dashboard.vue'
+// import { register } from 'register-service-worker'
 
 Vue.use(VueRouter)
 
@@ -21,19 +20,21 @@ const router = new VueRouter({
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: () =>
+      import(/* webpackChunkName: "login" */ '../views/Login.vue')
   },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register
-  },
+  // {
+  //   path: '/register',
+  //   name: 'Register',
+  //   component: () =>
+  //     import(/* webpackChunkName: "login" */ '../views/Register.vue')
+  // },
   {
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
     meta: {
-      requireAuth: true
+      requiresAuth: true
     }
   },
   {
@@ -41,7 +42,7 @@ const router = new VueRouter({
     name: 'Categories',
     component: Categories,
     meta: {
-      requireAuth: true
+      requiresAuth: true
     }
   },
   {
@@ -55,13 +56,22 @@ const router = new VueRouter({
   }
   ]
 })
+// const openRoutes = ['Login']
 router.beforeEach((to, from, next) => {
-  const currentUser = firebase.auth().currentUser
-  const requireAuth = to.matched.some(record => record.meta.requireAuth)
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
 
-  if (requireAuth && !currentUser) next('login')
-  else if (!requireAuth && currentUser) next('dashboard')
-  else next()
+  if (requiresAuth && !auth.currentUser) {
+    next('/login')
+  } else {
+    next()
+  }
+  // if (openRoutes.includes(to.name)) {
+  //   next()
+  // } else if (window.token) {
+  //   next()
+  // } else {
+  //   next('/login')
+  // }
 })
 
 export default router
